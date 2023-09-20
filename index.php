@@ -1,9 +1,19 @@
 <?php
 require_once __DIR__ . '/classes/Product.php';
+require_once __DIR__ . '/classes/Category.php';
 
-$cuccia = new Product('Cuccia', "70.90€", "cane", "House furniture for dogs");
+$cane = new Category("Cane", '<i class="fa-solid fa-dog"></i>');
+$gatto = new Category("Gatto", '<i class="fa-solid fa-cat"></i>');
 
-var_dump($cuccia);
+$cuccia = new Product('Cuccia', "70.90€", $cane, "House furniture for dogs");
+$gioco = new Product('Pallina di gomma', "2.50€", $gatto, "Red toy ball for cats");
+$cibo = new Product('Croccantini Cani Adulti', "10.50€", $cane, "Food for adult dogs");
+
+$products = [];
+
+array_push($products, $cuccia);
+array_push($products, $gioco);
+array_push($products, $cibo);
 ?>
 
 
@@ -23,6 +33,18 @@ var_dump($cuccia);
 
 <body>
 
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <h1 class="my-3">Products:</h1>
+        <div class="card-container my-5 d-flex gap-3 flex-wrap">
+          <?php
+          require_once __DIR__ . '/partials/card.php'
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src=""></script><!--  JS Custom Link -->
 </body>

@@ -7,9 +7,9 @@ class Product extends Category
   protected $price;
   protected $type;
 
-  public function __construct(string $_name, string $_price, string $_category, string $_type)
+  public function __construct(string $_name, string $_price, Category $_category, string $_type)
   {
-    parent::__construct($_category);
+    parent::__construct($_category->get_categ_name(), $_category->get_categ_icon());
 
     $this->name = $this->set_name($_name);
     $this->price = $this->set_price($_price);

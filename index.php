@@ -1,19 +1,16 @@
 <?php
 require_once __DIR__ . '/classes/Product.php';
-require_once __DIR__ . '/classes/Category.php';
+require_once __DIR__ . '/classes/Cuccia.php';
+require_once __DIR__ . '/classes/Cibo.php';
+require_once __DIR__ . '/classes/Gioco.php';
+require_once __DIR__ . '/classes/Cane.php';
+require_once __DIR__ . '/classes/Gatto.php';
+require_once __DIR__ . '/db/shop.php';
 
-$cane = new Category("Cane", '<i class="fa-solid fa-dog"></i>');
-$gatto = new Category("Gatto", '<i class="fa-solid fa-cat"></i>');
+$products = array_map(function($el) {
+  return new $el['type']($el['name'], $el['price'], new $el['category']());
+}, $rawShop);
 
-$cuccia = new Product('Cuccia', "70.90€", $cane, "House furniture for dogs");
-$gioco = new Product('Pallina di gomma', "2.50€", $gatto, "Red toy ball for cats");
-$cibo = new Product('Croccantini Cani Adulti', "10.50€", $cane, "Food for adult dogs");
-
-$products = [];
-
-array_push($products, $cuccia);
-array_push($products, $gioco);
-array_push($products, $cibo);
 ?>
 
 

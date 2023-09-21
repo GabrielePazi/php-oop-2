@@ -1,19 +1,17 @@
 <?php
 require_once __DIR__ . '/Category.php';
 
-class Product extends Category
+abstract class Product
 {
   protected $name;
   protected $price;
-  protected $type;
+  protected $category;
 
-  public function __construct(string $_name, string $_price, Category $_category, string $_type)
+  public function __construct(string $_name, string $_price, Category $_category)
   {
-    parent::__construct($_category->get_categ_name(), $_category->get_categ_icon());
-
     $this->name = $this->set_name($_name);
     $this->price = $this->set_price($_price);
-    $this->type = $this->set_type($_type);
+    $this->category = $this->setCategory($_category);
   }
 
   public function set_name($_name)
@@ -36,13 +34,13 @@ class Product extends Category
     return $this->price;
   }
 
-  public function set_type($_type)
+  public function setCategory($_category)
   {
-    return $this->type = $_type;
+    return $this->category = $_category;
   }
 
-  public function get_type()
+  public function getCategory()
   {
-    return $this->type;
+    return $this->category;
   }
 }

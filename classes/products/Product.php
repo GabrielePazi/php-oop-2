@@ -29,7 +29,7 @@ class Product
   public function setPrice($_price)
   {
     if (!is_numeric($_price)) {
-      throw new Exception("Price not valid", 2);
+      throw new Exception("Price of product: '". $this->getName() . "' not valid", 2);
     }
     return $this->price = $_price . "€";
   }

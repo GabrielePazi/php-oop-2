@@ -7,12 +7,17 @@ require_once __DIR__ . '/classes/categories/Gatto.php';
 require_once __DIR__ . '/db/shop.php';
 
 $products = array_map(function ($el) {
-  $prod = new $el['type']($el['name'], $el['price'], new $el['category']());
 
-  $prod->setWeight($el['weight']);
-  return $prod;
+  try {
+    $prod = new $el['type']($el['name'], $el['price'], new $el['category']());
+
+    $prod->setWeight($el['weight']);
+
+    return $prod;
+  } catch (Exception $e) {
+    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '</div>';
+  }
 }, $rawShop);
-
 ?>
 
 

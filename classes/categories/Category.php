@@ -1,32 +1,32 @@
 <?php
 
-abstract class Category
+class Category
 {
   protected $name;
   protected $icon;
 
   public function __construct(string $_name, string $_icon)
   {
-    $this->name = $this->set_name($_name);
-    $this->icon = $this->set_icon($_icon);
+    $this->name = $this->setName($_name);
+    $this->icon = $this->setIcon($_icon);
   }
 
-  public function set_name($_name)
+  public function setName($_name)
   {
     return $this->name = $_name;
   }
 
-  public function get_name()
+  public function getName()
   {
     return $this->name;
   }
 
-  public function set_icon($_icon)
+  public function setIcon($_icon)
   {
     return $this->icon = $_icon;
   }
 
-  public function get_icon()
+  public function getIcon()
   {
     return $this->icon;
   }

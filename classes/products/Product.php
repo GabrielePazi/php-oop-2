@@ -1,11 +1,10 @@
 <?php
-require_once __DIR__ . '/Product.php';
 
-class Cuccia extends Product
+class Product
 {
   protected $name;
+  protected $price;
   protected $category;
-  protected $color;
 
   public function __construct(string $_name, string $_price, Category $_category)
   {
@@ -16,12 +15,28 @@ class Cuccia extends Product
 
   public function setName($_name)
   {
+    if (strlen($_name) < 1) {
+      throw new Exception("Product's name too short", 1);
+    }
     return $this->name = $_name;
   }
 
   public function getName()
   {
     return $this->name;
+  }
+
+  public function setPrice($_price)
+  {
+    if (!is_numeric($_price)) {
+      throw new Exception("Price not valid", 2);
+    }
+    return $this->price = $_price . "€";
+  }
+
+  public function getPrice()
+  {
+    return $this->price;
   }
 
   public function setCategory($_category)
@@ -32,25 +47,5 @@ class Cuccia extends Product
   public function getCategory()
   {
     return $this->category;
-  }
-
-  public function setPrice($_price)
-  {
-    return $this->price = $_price;
-  }
-
-  public function getPrice()
-  {
-    return $this->price;
-  }
-
-  public function setColor($_color)
-  {
-    return $this->color = $_color;
-  }
-
-  public function getColor()
-  {
-    return $this->color;
   }
 }

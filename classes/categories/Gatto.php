@@ -9,14 +9,4 @@ class Gatto extends Category
   public function __construct()
   {
   }
-
-  public function getName()
-  {
-    return $this->name;
-  }
-
-  public function getIcon()
-  {
-    return $this->icon;
-  }
 }

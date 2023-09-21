@@ -1,14 +1,16 @@
 <?php
-require_once __DIR__ . '/classes/Product.php';
-require_once __DIR__ . '/classes/Cuccia.php';
-require_once __DIR__ . '/classes/Cibo.php';
-require_once __DIR__ . '/classes/Gioco.php';
-require_once __DIR__ . '/classes/Cane.php';
-require_once __DIR__ . '/classes/Gatto.php';
+require_once __DIR__ . '/classes/products/Cibo.php';
+require_once __DIR__ . '/classes/products/Cuccia.php';
+require_once __DIR__ . '/classes/products/Gioco.php';
+require_once __DIR__ . '/classes/categories/Cane.php';
+require_once __DIR__ . '/classes/categories/Gatto.php';
 require_once __DIR__ . '/db/shop.php';
 
-$products = array_map(function($el) {
-  return new $el['type']($el['name'], $el['price'], new $el['category']());
+$products = array_map(function ($el) {
+  $prod = new $el['type']($el['name'], $el['price'], new $el['category']());
+
+  $prod->setWeight($el['weight']);
+  return $prod;
 }, $rawShop);
 
 ?>

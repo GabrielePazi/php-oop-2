@@ -1,11 +1,8 @@
 <?php
 require_once __DIR__ . '/Product.php';
-require_once __DIR__ . '/../../traits/Peso.php';
 
 class Cuccia extends Product
 {
-  use Peso;
-
   protected $name;
   protected $category;
   protected $color;

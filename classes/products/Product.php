@@ -1,7 +1,9 @@
 <?php
-
+require_once __DIR__ . '/../../traits/Peso.php';
 class Product
 {
+  use Peso;
+
   protected $name;
   protected $price;
   protected $category;
